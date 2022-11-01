@@ -6,7 +6,7 @@ import os
 def delete_prefetch_files():
     """securely delete prefetch files"""
     # open prefetch files
-    path = 'C:\\Windows\\Prefetch'
+    path = 'C:\\Windows\\Prefetch\\'
     # list all files in directory
     files = os.listdir(path)
     # iterate through files
