@@ -33,5 +33,5 @@ def delete_security_event_logs():
 def delete_account_usage_artifacts():
     """delete account usage artifacts"""
     # delete_last_login()
-    delete_security_event_logs()
+    # delete_security_event_logs()
     return True
