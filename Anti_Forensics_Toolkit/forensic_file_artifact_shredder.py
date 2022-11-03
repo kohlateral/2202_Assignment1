@@ -1,5 +1,6 @@
 from Anti_Forensics_Toolkit import secure_delete as sd
 import os
+import winreg
 
 
 def delete_prefetch_files():
@@ -19,7 +20,7 @@ def delete_prefetch_files():
     except FileNotFoundError:
         print("Prefetch folder not found\n")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + e + '\n')
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
     return True
 
 
@@ -39,7 +40,27 @@ def delete_jump_list():
     except FileNotFoundError:
         print("Jump list not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + e + '\n')
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
+    return True
+
+
+def delete_shortcut_artifacts():
+    """delete shortcut artifacts"""
+    try:
+        # open shortcut artifacts
+        userprofile = os.environ['USERPROFILE']
+        path = userprofile + '\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\'
+        files = os.listdir(path)
+        for file in files:
+            try:
+                sd.secure_delete(path + file)
+            except Exception as e:
+                print(e)
+        print("shortcut artifacts deleted")
+    except FileNotFoundError:
+        print("shortcut artifacts not found")
+    except Exception as e:
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
     return True
 
 
@@ -59,7 +80,7 @@ def delete_history_file():
     except FileNotFoundError:
         print("IE Edge file not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + e + '\n')
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
     return True
 
 
@@ -79,7 +100,7 @@ def delete_thumbcache_db():
     except FileNotFoundError:
         print("Thumbcache db not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + e + '\n')
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
     return True
 
 
@@ -99,7 +120,7 @@ def delete_outlook_artifacts():
     except FileNotFoundError:
         print("outlook artifacts not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + e + '\n')
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
     return True
 
 
@@ -119,7 +140,7 @@ def delete_file_downloads():
     except FileNotFoundError:
         print("outlook artifacts not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + e + '\n')
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
     return True
 
 
@@ -136,7 +157,7 @@ def delete_amcache_hve():
     except FileNotFoundError:
         print("Amcache.hve not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + e + '\n')
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
     return True
 
 
@@ -155,7 +176,26 @@ def delete_windows_timeline():
     except FileNotFoundError:
         print("windows timeline not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + e + '\n')
+        print('error in ' + path + '\n Error is ' + str(e) + '\n')
+    return True
+
+
+def delete_shimcache_data():
+    """Overwrites shimcache"""
+    # open shimcache
+    zero_reg_binary_value = b'\x00' * 4096
+    try:
+        reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
+                                 r"SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache",
+                                 0, winreg.KEY_ALL_ACCESS)
+        for k in range(0, winreg.QueryInfoKey(reg_key)[1]):
+            key_details = winreg.EnumValue(reg_key, k)
+            try:
+                winreg.SetValueEx(reg_key, key_details[0], 0, key_details[2], zero_reg_binary_value)
+            except Exception as e:
+                print(e)
+    except FileNotFoundError:
+        print("Registry key AppCompatCache not found")
     return True
 
 
@@ -163,10 +203,12 @@ def delete_file_opening_artifacts():
     """delete file opening artifacts"""
     delete_prefetch_files()
     delete_jump_list()
+    delete_shortcut_artifacts()
     # delete_history_file()
     delete_thumbcache_db()
-    delete_outlook_artifacts()
-    delete_file_downloads()
+    # delete_outlook_artifacts()
+    # delete_file_downloads()
     # delete_amcache_hve()
     # delete_windows_timeline()
+    delete_shimcache_data()
     return True
