@@ -1,6 +1,6 @@
 # Anti-Forensics Toolkit (User Manual)
 
-Anti-Forensics Toolkit aims to securely deleting selected files, securely deleting known forensic artifacts, and manipulate timestamps of selected files.
+Anti-Forensics Toolkit aims to securely delete selected files, securely delete known forensic artifacts, and manipulate timestamps of selected files.
 
 ## Table Of Contents
 
