@@ -32,7 +32,7 @@ pip install -r requirements.txt
 
 1. Run the script to bring up a menu of choices.
 ```
-python3 Baseline-Analyzer.py
+python3 main.py
 ```
 
 ## Authors
