@@ -1,5 +1,7 @@
 import os
 
+cluster_size = 4096
+
 
 def secure_delete(file_path):
     """Securely delete file by overwriting with 7 passes of data."""
@@ -31,8 +33,13 @@ def write_zeros(file_path):
     """open file and overwrite with zeros"""
     with open(file_path, 'wb') as f:
         f.seek(0)
-        f.write(b'\0' * os.path.getsize(file_path))
-        f.close()
+        write_bytes = 0
+        while write_bytes < os.path.getsize(file_path):
+            f.write(b'\x00' * cluster_size)
+            write_bytes += cluster_size
+        f.flush()
+        fd = f.fileno()
+        os.fsync(fd)
     return True
 
 
@@ -40,8 +47,13 @@ def write_one(file_path):
     """open file and overwrite with ones"""
     with open(file_path, 'wb') as f:
         f.seek(0)
-        f.write(b'\xff' * os.path.getsize(file_path))
-        f.close()
+        write_bytes = 0
+        while write_bytes < os.path.getsize(file_path):
+            f.write(b'\xFF' * cluster_size)
+            write_bytes += cluster_size
+        f.flush()
+        fd = f.fileno()
+        os.fsync(fd)
     return True
 
 
@@ -50,7 +62,13 @@ def write_random(file_path):
     with open(file_path, 'wb') as f:
         f.seek(0)
         f.write(os.urandom(os.path.getsize(file_path)))
-        f.close()
+        write_bytes = 0
+        while write_bytes < os.path.getsize(file_path):
+            f.write(os.urandom(2 * cluster_size))
+            write_bytes += cluster_size
+        f.flush()
+        fd = f.fileno()
+        os.fsync(fd)
     return True
 
 
