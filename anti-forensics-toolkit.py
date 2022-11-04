@@ -14,10 +14,10 @@ def menu():
     print("1. Secure Delete")
     print("2. Delete file opening artifacts")
     print("3. Delete USB Registry Key Identification")
-    print("4. Delete Account Usage Artifacts")
-    print("5. Delete Browser Artifacts")
-    print("6. Change timestamps")
-    print("7. Exit")
+    # print("4. Delete Account Usage Artifacts")
+    print("4. Delete Browser Artifacts")
+    print("5. Change timestamps")
+    print("6. Exit")
     choice = input("Enter choice: ")
     try:
         if choice == "1":
@@ -56,16 +56,16 @@ def menu():
             else:
                 menu()
             menu()
+        # elif choice == "4":
+        #     confirm = input("Proceed with secure delete of account usage? (y/n) ").rstrip().lower()
+        #     if confirm == "y":
+        #         fauas.delete_account_usage_artifacts()
+        #         print("Account usage Deleted. Returning to menu...\n")
+        #         menu()
+        #     else:
+        #         menu()
+        #     menu()
         elif choice == "4":
-            confirm = input("Proceed with secure delete of account usage? (y/n) ").rstrip().lower()
-            if confirm == "y":
-                fauas.delete_account_usage_artifacts()
-                print("Account usage Deleted. Returning to menu...\n")
-                menu()
-            else:
-                menu()
-            menu()
-        elif choice == "5":
             confirm = input("Proceed with secure delete of browser artifacts? (y/n) ").rstrip().lower()
             if confirm == "y":
                 fbas.delete_browser_artifacts()
@@ -75,7 +75,7 @@ def menu():
                 menu()
             menu()
 
-        elif choice == "6":
+        elif choice == "5":
             # Use | as the delimiter because it is one of the few characters that will not appear in an absolute path.
             file_path_list = list(input("Enter absolute file path(s) (separated by |): ").split("|"))
             confirm = input("Proceed with changing the timestamps? (y/n) ").rstrip().lower()
@@ -91,7 +91,7 @@ def menu():
             else:
                 menu()
 
-        elif choice == "7":
+        elif choice == "6":
             sys.exit()
 
         else:
