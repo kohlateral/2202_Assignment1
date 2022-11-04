@@ -9,7 +9,7 @@ zero_REG_DWORD_value = 0 * 4096
 zero_REG_MULTI_SZ_value = ['00' * 4096]
 
 
-def delete_usb_registry_key_identification():
+def overwrite_usb_registry_key_identification():
     """delete usb registry key identification"""
     # open registry key
     list_of_devices = []
@@ -104,7 +104,7 @@ def delete_pnp_events():
 
 def delete_usb_history():
     """delete usb history"""
-    delete_usb_registry_key_identification()
+    overwrite_usb_registry_key_identification()
     delete_first_last_usb_times()
     # delete_user_usb_information()
     # delete_pnp_events()
