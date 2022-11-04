@@ -22,7 +22,6 @@ def overwrite_usb_registry_key_identification():
         for i in range(0, winreg.QueryInfoKey(reg_key)[0]):
             device = winreg.EnumKey(reg_key, i)
             list_of_devices.append(device)
-            print(device)
             # list all subkeys
             for device in list_of_devices:
                 subkey = r"SYSTEM\CurrentControlSet\Enum\USBSTOR" + "\\" + device
@@ -63,8 +62,8 @@ def delete_first_last_usb_times():
     try:
         # open Plug and Play Log Files
         path = 'C:\\Windows\\INF\\setupapi.dev.log'
-        print("File found")
         sd.secure_delete(path)
+        print('Deleted setupapi.dev.log times')
     except FileNotFoundError:
         print("Registry key USB not found")
     except Exception as e:
@@ -79,7 +78,6 @@ def delete_user_usb_information():
         reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\MountedDevices", 0, winreg.KEY_ALL_ACCESS)
         for i in range(0, winreg.QueryInfoKey(reg_key)[1]):
             information = winreg.EnumValue(reg_key, i)
-            print(information)
             # delete registry value
             # winreg.DeleteValue(reg_key, information[i])
     except Exception as e:
