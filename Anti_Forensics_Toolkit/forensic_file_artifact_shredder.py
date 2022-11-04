@@ -180,7 +180,7 @@ def delete_windows_timeline():
     return True
 
 
-def delete_shimcache_data():
+def overwrite_shimcache_data():
     """Overwrites shimcache"""
     # open shimcache
     zero_reg_binary_value = b'\x00' * 4096
@@ -210,5 +210,5 @@ def delete_file_opening_artifacts():
     # delete_file_downloads()
     # delete_amcache_hve()
     # delete_windows_timeline()
-    delete_shimcache_data()
+    overwrite_shimcache_data()
     return True
