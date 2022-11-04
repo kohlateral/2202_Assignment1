@@ -13,7 +13,7 @@ def menu():
     print("3. Delete USB Registry Key Identification")
     print("4. Delete Account Usage Artifacts")
     print("5. Modify timestamps")
-    print("0. Exit")
+    print("6. Exit")
     choice = input("Enter choice: ")
     try:
         if choice == "1":
@@ -76,7 +76,7 @@ def menu():
             else:
                 menu()
 		
-        elif choice == "0":
+        elif choice == "6":
             sys.exit()
 			
         else:
