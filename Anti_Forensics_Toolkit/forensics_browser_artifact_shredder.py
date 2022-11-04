@@ -83,24 +83,6 @@ def delete_firefox_history():
     return True
 
 
-def delete_chrome_history():
-    """Deletes chrome browser history"""
-    try:
-        # open chrome history
-        userprofile = os.environ['USERPROFILE']
-        path = userprofile + '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\History'
-        try:
-            sd.secure_delete(path)
-        except Exception as e:
-            print(e)
-        print("Chrome history deleted")
-    except FileNotFoundError:
-        print("Chrome history not found")
-    except Exception as e:
-        print('error in ' + path + '\n Error is ' + str(e) + '\n')
-    return True
-
-
 def delete_firefox_cache():
     """Delete firefox cache"""
     try:
