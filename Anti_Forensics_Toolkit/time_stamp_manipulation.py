@@ -55,7 +55,7 @@ def change_timestamp(file_path):
                     break
 
         elif creation_time_confirm == "n" :
-            print("Creation Time will not be changed. Skipping...\n")
+            print("Creation Time will not be changed. Skipping...")
             break
 
         else:
@@ -81,7 +81,7 @@ def change_timestamp(file_path):
                     break
 
         elif last_access_time_confirm == "n" :
-            print("Last Access Time will not be changed. Skipping...\n")
+            print("Last Access Time will not be changed. Skipping...")
             break
 
         else:
@@ -107,11 +107,11 @@ def change_timestamp(file_path):
                     break
 
         elif modification_time_confirm == "n" :
-            print("Modification Time will not be changed. Skipping...\n")
+            print("Modification Time will not be changed. Skipping...")
             break
 
         else:
-            print("Invalid option!")
+            continue
 
     # End of "Change Modification Time"
     
