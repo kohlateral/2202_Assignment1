@@ -124,26 +124,6 @@ def delete_outlook_artifacts():
     return True
 
 
-def delete_file_downloads():
-    """delete file downloads"""
-    try:
-        # open Email Attachments
-        userprofile = os.environ['USERPROFILE']
-        path = userprofile + '\\AppData\\Roaming\\Microsoft\\Windows\\IEDownloadHistory\\'
-        files = os.listdir(path)
-        for file in files:
-            try:
-                sd.secure_delete(path + file)
-            except Exception as e:
-                print(e)
-        print("outlook artifacts deleted")
-    except FileNotFoundError:
-        print("outlook artifacts not found")
-    except Exception as e:
-        print('error in ' + path + '\n Error is ' + str(e) + '\n')
-    return True
-
-
 def delete_amcache_hve():
     """delete amcache hve"""
     try:
@@ -204,11 +184,10 @@ def delete_file_opening_artifacts():
     delete_prefetch_files()
     delete_jump_list()
     delete_shortcut_artifacts()
-    # delete_history_file()
+    delete_history_file()
     delete_thumbcache_db()
-    # delete_outlook_artifacts()
-    # delete_file_downloads()
+    delete_outlook_artifacts()
     # delete_amcache_hve()
-    # delete_windows_timeline()
+    delete_windows_timeline()
     overwrite_shimcache_data()
     return True
