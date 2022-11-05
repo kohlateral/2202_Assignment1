@@ -83,12 +83,9 @@ python3 anti-forensics-toolkit.py
 1. Enter "5" as the choice.
 2. Specify one or more files to change timestamps of, with each file separated by a "|".
 3. Proceed with the change when prompted. The current timestamps of the file will be displayed.
+4. Proceed with the desired timestamps when prompted.
 
-![Change Timestamp 1](images/change-timestamp-1.png)
-
-4. Proceed with changing one or more timestamps when prompted.
-
-![Change Timestamp 2](images/change-timestamp-2.png)
+![Change Timestamp](images/change-timestamp.png)
 
 #### Option Six (Exit)
 
