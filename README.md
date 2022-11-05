@@ -41,36 +41,52 @@ python3 anti-forensics-toolkit.py
 ![Menu](images/menu.png)
 
 
-#### Option One
+#### Option One (Secure Delete)
 
-1. Specify one or more files to securely delete, with each file separated by a "|".
-2. Proceed with the deletion when prompted.
+1. Enter "1" as the choice.
+2. Specify one or more files to securely delete, with each file separated by a "|".
+3. Proceed with the deletion when prompted.
 
 ![Secure Delete](images/secure-delete.png)
 
-#### Option Two
+#### Option Two (Delete file opening artifacts)
 
-1. 
+1. Enter "2" as the choice.
+2. Proceed with the deletion when prompted.
 
-#### Option Three
+![Delete File-opening Artifacts](images/delete-file-opening-artifacts.png)
 
-#### Option Four
+#### Option Three (Delete USB Registry Key Identification)
 
-#### Option Five
+1. Enter "3" as the choice.
+2. Proceed with the deletion when prompted.
 
-1. Specify one or more files to change timestamps of, with each file separated by a "|".
-2. Proceed with the change when prompted.
-3. The current timestamps of the file will be displayed.
+![Delete USB Registry Key Identification](images/delete-usb-key-info.png)
+
+
+#### Option Four (Delete Browser Artifacts)
+
+1. Enter "4" as the choice.
+2. Proceed with the deletion when prompted.
+
+![Delete Browser Artifacts](images/delete-browser-artifacts.png)
+
+
+#### Option Five (Change timestamps)
+
+1. Enter "5" as the choice.
+2. Specify one or more files to change timestamps of, with each file separated by a "|".
+3. Proceed with the change when prompted. The current timestamps of the file will be displayed.
 
 ![Change Timestamp 1](images/change-timestamp-1.png)
 
 4. Proceed with changing one or more timestamps when prompted.
 
-![Change Timestamp 2](images/change-timestamp-2.png))
+![Change Timestamp 2](images/change-timestamp-2.png)
 
-#### Option Six
+#### Option Six (Exit)
 
-- Simply exit without doing anything.
+1. Enter "6" as the choice. Program simply exits without doing anything.
 
 ## Authors
 
