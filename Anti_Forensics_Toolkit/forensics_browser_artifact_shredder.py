@@ -12,12 +12,12 @@ def delete_chrome_history():
         try:
             sd.secure_delete(path)
         except Exception as e:
-            print(e)
+            pass
         print("Chrome history deleted")
     except FileNotFoundError:
         print("Chrome history not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + str(e) + '\n')
+        pass
     return True
 
 
@@ -33,12 +33,12 @@ def delete_firefox_cookies():
                 if file.endswith('.default-release'):
                     sd.secure_delete(path + file + '\\cookies.sqlite')
             except Exception as e:
-                print(e)
+                pass
         print("Firefox cookies deleted")
     except FileNotFoundError:
         print("Firefox cookies not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + str(e) + '\n')
+        pass
     return True
 
 
@@ -53,12 +53,12 @@ def delete_chrome_cookies():
             try:
                 sd.secure_delete(file)
             except Exception as e:
-                print(e)
+                pass
         print("Chrome history deleted")
     except FileNotFoundError:
         print("Chrome history not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + str(e) + '\n')
+        pass
     return True
 
 
@@ -74,12 +74,12 @@ def delete_firefox_history():
                 if file.endswith('.default-release'):
                     sd.secure_delete(path + file + '\\places.sqlite')
             except Exception as e:
-                print(e)
+                pass
         print("Firefox history deleted")
     except FileNotFoundError:
         print("Firefox history not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + str(e) + '\n')
+        pass
     return True
 
 
@@ -99,14 +99,14 @@ def delete_firefox_cache():
                         try:
                             sd.secure_delete(cache_file)
                         except Exception as e:
-                            print(e)
+                            pass
             except Exception as e:
-                print(e)
+                pass
         print("Firefox cache deleted")
     except FileNotFoundError:
         print("Firefox cache not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + str(e) + '\n')
+        pass
     return True
 
 
@@ -121,12 +121,12 @@ def delete_chrome_cache():
             try:
                 sd.secure_delete(file)
             except Exception as e:
-                print(e)
+                pass
         print("Chrome cache deleted")
     except FileNotFoundError:
         print("Chrome cache not found")
     except Exception as e:
-        print('error in ' + path + '\n Error is ' + str(e) + '\n')
+        pass
     return True
 
 
