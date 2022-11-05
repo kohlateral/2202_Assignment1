@@ -18,7 +18,7 @@ Anti-Forensics Toolkit aims to securely delete selected files, securely delete k
 ### Requirements
 
 - Windows 10
-- Python 3
+- Python 3 (if running the .py file instead of .exe)
 
 
 ### Libraries
@@ -30,10 +30,47 @@ pip install -r requirements.txt
 
 ### Executing the program
 
-1. Run the script to bring up a menu of choices.
+- Run the script or the pre-compiled binary to bring up a menu of choices.
 ```
-python3 main.py
+python3 anti-forensics-toolkit.py
 ```
+
+```
+.\anti-forensics-toolkit.exe
+```
+![Menu](images/menu.png)
+
+
+#### Option One
+
+1. Specify one or more files to securely delete, with each file separated by a "|".
+2. Proceed with the deletion when prompted.
+
+![Secure Delete](images/secure-delete.png)
+
+#### Option Two
+
+1. 
+
+#### Option Three
+
+#### Option Four
+
+#### Option Five
+
+1. Specify one or more files to change timestamps of, with each file separated by a "|".
+2. Proceed with the change when prompted.
+3. The current timestamps of the file will be displayed.
+
+![Change Timestamp 1](images/change-timestamp-1.png)
+
+4. Proceed with changing one or more timestamps when prompted.
+
+![Change Timestamp 2](images/change-timestamp-2.png))
+
+#### Option Six
+
+- Simply exit without doing anything.
 
 ## Authors
 
