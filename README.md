@@ -9,7 +9,13 @@ Anti-Forensics Toolkit aims to securely delete selected files, securely delete k
   * [Getting Started](#getting-started)
     + [Requirements](#requirements)
     + [Libraries](#libraries)
-    + [Executing program](#executing-program)
+    + [Executing the program](#executing-the-program)
+      1. [Option One (Secure Delete)](#option-one-secure-delete)
+      2. [Option Two (Delete file opening artifacts)](#option-two-delete-file-opening-artifacts)
+      3. [Option Three (Delete USB Registry Key Identification)](#option-three-delete-usb-registry-key-identification)
+      4. [Option Four (Delete Browser Artifacts)](#option-four-delete-browser-artifacts)
+      5. [Option Five (Change timestamps)](#option-five-change-timestamps)
+      6. [Option Six (Exit)](#option-six-exit)
   * [Authors](#authors)
 
 
