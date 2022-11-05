@@ -43,7 +43,7 @@ def delete_firefox_cookies():
 
 
 def delete_chrome_cookies():
-    """Delete chrome cookies history"""
+    """Delete chrome cookies"""
     try:
         # open chrome history
         userprofile = os.environ['USERPROFILE']
@@ -54,9 +54,9 @@ def delete_chrome_cookies():
                 sd.secure_delete(file)
             except Exception as e:
                 pass
-        print("Chrome history deleted")
+        print("Chrome cookies deleted")
     except FileNotFoundError:
-        print("Chrome history not found")
+        print("Chrome cookies not found")
     except Exception as e:
         pass
     return True
