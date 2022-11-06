@@ -45,9 +45,9 @@ def delete_firefox_cookies():
 def delete_chrome_cookies():
     """Delete chrome cookies"""
     try:
-        # open chrome history
+        # open chrome cookies
         userprofile = os.environ['USERPROFILE']
-        path = userprofile + '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Locale Storage\\LevelDB\\'
+        path = userprofile + '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Local Storage\\leveldb\\'
         files = os.listdir(path)
         for file in files:
             try:
@@ -59,7 +59,9 @@ def delete_chrome_cookies():
         print("Chrome cookies not found")
     except Exception as e:
         pass
+
     return True
+
 
 
 def delete_firefox_history():
@@ -115,7 +117,7 @@ def delete_chrome_cache():
     try:
         # open chrome history
         userprofile = os.environ['USERPROFILE']
-        path = userprofile + '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\Cache-Data'
+        path = userprofile + '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\Cache_Data\\'
         files = os.listdir(path)
         for file in files:
             try:
