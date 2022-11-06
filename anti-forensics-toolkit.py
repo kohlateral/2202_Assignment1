@@ -65,8 +65,11 @@ def menu():
         elif choice == "4":
             confirm = input("Proceed with secure delete of browser artifacts? (y/n) ").rstrip().lower()
             if confirm == "y":
-                fbas.delete_browser_artifacts()
-                print("\nBrowser Artifacts Deleted. Returning to menu...")
+                deleted = fbas.delete_browser_artifacts()
+                if deleted:
+                    print("\nBrowser Artifacts Deleted. Returning to menu...")
+                else:
+                    print("\nBrowser Artifacts Not Found. Returning to menu...")
                 menu()
             else:
                 menu()

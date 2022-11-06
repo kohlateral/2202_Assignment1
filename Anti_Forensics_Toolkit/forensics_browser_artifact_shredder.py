@@ -9,13 +9,13 @@ def delete_chrome_history():
         # open chrome history
         userprofile = os.environ['USERPROFILE']
         path = userprofile + '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\History'
-        try:
+        if (os.path.isfile(path)):
             sd.secure_delete(path)
-        except Exception as e:
-            pass
-        print("Chrome history deleted")
-    except FileNotFoundError:
-        print("Chrome history not found")
+            print("Chrome history deleted")
+        else:
+            print("Chrome history not found")
+            return False
+        
     except Exception as e:
         pass
     return True
@@ -27,16 +27,20 @@ def delete_firefox_cookies():
         # open firefox cookies
         userprofile = os.environ['USERPROFILE']
         path = userprofile + '\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\'
-        files = os.listdir(path)
-        for file in files:
+        profiles = os.listdir(path)
+        for profile in profiles:
             try:
-                if file.endswith('.default-release'):
-                    sd.secure_delete(path + file + '\\cookies.sqlite')
+                if profile.endswith('.default-release'):
+                    full_path = path + profile + '\\cookies.sqlite'
+                    if (os.path.isfile(full_path)):
+                        sd.secure_delete(full_path)
+                        print("Firefox cookies deleted")
+                    else:
+                        print("Firefox cookies not found")
+                        return False
             except Exception as e:
                 pass
-        print("Firefox cookies deleted")
-    except FileNotFoundError:
-        print("Firefox cookies not found")
+        
     except Exception as e:
         pass
     return True
@@ -49,14 +53,18 @@ def delete_chrome_cookies():
         userprofile = os.environ['USERPROFILE']
         path = userprofile + '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Local Storage\\leveldb\\'
         files = os.listdir(path)
+
+        if len(files) == 0:
+            print("Chrome cookies not found")
+            return False
+
         for file in files:
             try:
                 sd.secure_delete(path + file)
             except Exception as e:
                 pass
         print("Chrome cookies deleted")
-    except FileNotFoundError:
-        print("Chrome cookies not found")
+        
     except Exception as e:
         pass
 
@@ -70,16 +78,22 @@ def delete_firefox_history():
         # open firefox history
         userprofile = os.environ['USERPROFILE']
         path = userprofile + '\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\'
-        files = os.listdir(path)
-        for file in files:
+        profiles = os.listdir(path)
+        
+        for profile in profiles:
             try:
-                if file.endswith('.default-release'):
-                    sd.secure_delete(path + file + '\\places.sqlite')
+                if profile.endswith('.default-release'):
+                    full_path = path + profile + '\\places.sqlite'
+                    if (os.path.isfile(full_path)):
+                        sd.secure_delete(full_path)
+                        print("Firefox history deleted")
+                    else:
+                        print("Firefox history not found")
+                        return False
+
             except Exception as e:
                 pass
-        print("Firefox history deleted")
-    except FileNotFoundError:
-        print("Firefox history not found")
+        
     except Exception as e:
         pass
     return True
@@ -91,22 +105,25 @@ def delete_firefox_cache():
         # open firefox history
         userprofile = os.environ['USERPROFILE']
         path = userprofile + '\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\'
-        files = os.listdir(path)
-        for file in files:
+        profiles = os.listdir(path)
+        for profile in profiles:
             try:
-                if file.endswith('.default-release'):
-                    new_path = path + file + '\\cache2\\entries\\'
+                if profile.endswith('.default-release'):
+                    new_path = path + profile + '\\cache2\\entries\\'
                     cache_files = os.listdir(new_path)
+                    if len(cache_files) == 0:
+                        print("Firefox cache not found")
+                        return False
+
                     for cache_file in cache_files:
                         try:
                             sd.secure_delete(new_path + cache_file)
                         except Exception as e:
                             pass
+                    print("Firefox cache deleted")
             except Exception as e:
                 pass
-        print("Firefox cache deleted")
-    except FileNotFoundError:
-        print("Firefox cache not found")
+
     except Exception as e:
         pass
     return True
@@ -118,15 +135,19 @@ def delete_chrome_cache():
         # open chrome history
         userprofile = os.environ['USERPROFILE']
         path = userprofile + '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\Cache_Data\\'
-        files = os.listdir(path)
-        for file in files:
+        cache_files = os.listdir(path)
+
+        if len(cache_files) == 0:
+            print("Chrome cache not found")
+            return False
+        
+        for cache_file in cache_files:
             try:
-                sd.secure_delete(path + file)
+                sd.secure_delete(path + cache_file)
             except Exception as e:
                 pass
         print("Chrome cache deleted")
-    except FileNotFoundError:
-        print("Chrome cache not found")
+        
     except Exception as e:
         pass
     return True
@@ -134,10 +155,16 @@ def delete_chrome_cache():
 
 def delete_browser_artifacts():
     """delete browser artifacts"""
-    delete_firefox_cookies()
-    delete_chrome_cookies()
-    delete_firefox_history()
-    delete_chrome_history()
-    delete_firefox_cache()
-    delete_chrome_cache()
-    return True
+    deleted1 = delete_firefox_cookies()
+    deleted2 = delete_chrome_cookies()
+    deleted3 = delete_firefox_history()
+    deleted4 = delete_chrome_history()
+    deleted5 = delete_firefox_cache()
+    deleted6 = delete_chrome_cache()
+
+    # If not a single browser artifact is deleted, return False.
+    if not deleted1 and not deleted2 and not deleted3 and not deleted4 and not deleted5 and not deleted6:
+        return False
+    # If at least one browser artifact is deleted, return True.
+    else:
+        return True
