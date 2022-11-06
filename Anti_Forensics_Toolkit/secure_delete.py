@@ -25,7 +25,7 @@ def secure_delete(file_path):
         # delete file
         os.remove(new_file_name)
     except Exception as e:
-        pass
+        return False
     return True
 
 

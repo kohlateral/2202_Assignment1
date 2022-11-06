@@ -51,7 +51,7 @@ def delete_chrome_cookies():
         files = os.listdir(path)
         for file in files:
             try:
-                sd.secure_delete(file)
+                sd.secure_delete(path + file)
             except Exception as e:
                 pass
         print("Chrome cookies deleted")
@@ -97,7 +97,7 @@ def delete_firefox_cache():
                     cache_files = os.listdir(new_path)
                     for cache_file in cache_files:
                         try:
-                            sd.secure_delete(cache_file)
+                            sd.secure_delete(new_path + cache_file)
                         except Exception as e:
                             pass
             except Exception as e:
@@ -119,7 +119,7 @@ def delete_chrome_cache():
         files = os.listdir(path)
         for file in files:
             try:
-                sd.secure_delete(file)
+                sd.secure_delete(path + file)
             except Exception as e:
                 pass
         print("Chrome cache deleted")
